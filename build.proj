@@ -1,0 +1,38 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="Build">
+    <ItemGroup>
+      <Files Include="app.js" />
+      <Files Include="gadget.xml" />
+      <Files Include="inreplyto.html" />
+      <Files Include="inreplyto.js" />
+      <Files Include="jquery.glob.js" />
+      <Files Include="jquery.js" />
+      <Files Include="locale.js" />
+      <Files Include="notify.wav" />
+      <Files Include="oauth.js" />
+      <Files Include="settings.html" />
+      <Files Include="sha1.js" />
+      <Files Include="showuser.html" />
+      <Files Include="showuser.js" />
+      <Files Include="tweetz3.html" />
+      <Files Include="css\**\*.*" />
+      <Files Include="images\**\*.*" />
+      <Files Include="de\**\*.*" />
+      <Files Include="el\**\*.*" />
+      <Files Include="es\**\*.*" />
+      <Files Include="fr\**\*.*" />
+      <Files Include="hu\**\*.*" />
+      <Files Include="it\**\*.*" />
+      <Files Include="ja\**\*.*" />
+      <Files Include="lv\**\*.*" />
+      <Files Include="pt-br\**\*.*" />
+      <Files Include="sv\**\*.*" />
+      <Files Include="tr\**\*.*" />
+    </ItemGroup>
+    <Zip Files="@(Files)"
+         ZipFileName="tweetz31.gadget"
+         ZipLevel="9" />
+  </Target>
+
+  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+</Project>

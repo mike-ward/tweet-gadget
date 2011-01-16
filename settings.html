@@ -1,0 +1,186 @@
+﻿<html>
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+    body { width: 250px; height: 400px; margin-top: 0; }
+    table { font-size: 12px; margin-top: 5px; }
+    td { text-align: center; }
+    div { margin-bottom: 3px; }
+    #docked_height, #undocked_height { width: 35px; margin-right: 10px; }
+    a, a:visited { color: #00f; }
+    hr { height: 1px; }
+    #height_label, #intervals_label, #font_size_label, #tweets_label { text-align: center; font-variant: small-caps; font-weight: bold; }
+    #intervals_label, #font_size_label, #tweets_label { border-top: 1px solid #aaa; margin-top: 5px; padding-top: 5px; }
+    #fonts { text-align: center; }
+  </style>
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript">
+    /*jslint browser: true, windows: true */
+    /*global $: false, jQuery: false, window: false */
+
+    var Options = {
+      settingsClosing: function (event) {
+        if (event.closeAction == event.Action.commit) {
+          var settings = System.Gadget.document.parentWindow.APP.settings;
+          settings.dockedHeight(Math.max(150, +$("#docked_height").val()));
+          settings.undockedHeight(Math.max(150, +$("#undocked_height").val()));
+          settings.chirpOnStatus($("#chirpstatus").attr("checked"));
+          settings.chirpOnMention($("#chirpmention").attr("checked"));
+          settings.chirpOnMessage($("#chirpmessage").attr("checked"));
+          settings.intervalHome($("#home").val());
+          settings.intervalMentions($("#mentions").val());
+          settings.intervalMessages($("#messages").val());
+          settings.checkForUpdates($("#checkForUpdates").attr("checked"));
+          settings.fontSize($("input:radio:checked").val());
+          settings.showLinks($("#showLinks").attr("checked"));
+        }
+        event.cancel = false;
+      }
+    };
+
+    $(function () {
+      System.Gadget.onSettingsClosing = Options.settingsClosing;
+      var settings = System.Gadget.document.parentWindow.APP.settings;
+      $("#docked_height").val(settings.dockedHeight());
+      $("#undocked_height").val(settings.undockedHeight());
+      $("#chirpstatus").attr("checked", settings.chirpOnStatus());
+      $("#chirpmention").attr("checked", settings.chirpOnMention());
+      $("#chirpmessage").attr("checked", settings.chirpOnMessage());
+      $("#checkForUpdates").attr("checked", settings.checkForUpdates());
+      $("#home option[value='" + settings.intervalHome() + "']").attr("selected", "selected");
+      $("#mentions option[value='" + settings.intervalMentions() + "']").attr("selected", "selected");
+      $("#messages option[value='" + settings.intervalMessages() + "']").attr("selected", "selected");
+      $("#version").text(System.Gadget.version);
+      $("a").bind("focus", function () { this.hideFocus = true; });
+      var fs = settings.fontSize() || "medium";
+      $("#" + fs).attr("checked", "checked");
+      $("#showLinks").attr("checked", settings.showLinks());
+
+      var locale = System.Gadget.document.parentWindow.APP.locale;
+      $("#height_label").text(locale.settings_height);
+      $("#docked_label").text(locale.settings_docked);
+      $("#undocked_label").text(locale.settings_undocked);
+      $("#font_size_label").text(locale.settings_font_size);
+      $("#tweets_label").text(locale.settings_tweets);
+      $("#show_links_label").text(locale.settings_show_link);
+      $("#chirp_status_label").text(locale.settings_chirp_status);
+      $("#chirp_mention_label").text(locale.settings_chirp_mention);
+      $("#chirp_message_label").text(locale.settings_chirp_message);
+      $("#check_for_updates_label").text(locale.settings_check_updates);
+      $("#intervals_label").text(locale.settings_intervals);
+      $("#home_label").text(locale.settings_home);
+      $("#mentions_label").text(locale.settings_mentions);
+      $("#messages_label").text(locale.settings_messages);
+      $("#favorites_label").text(locale.settings_favorites);
+      $("#donate").text(locale.settings_donate);
+      $("#help").text(locale.settings_help);
+      $("#version_label").text(locale.settings_version_label);
+    });
+  </script>
+</head>
+<body>
+  <div>
+    <div id="height_label">
+      Height</div>
+    <table id="heights">
+      <tr>
+        <td>
+          <label id="docked_label" for="docked_height">Docked:</label>
+        </td>
+        <td>
+          <input type="text" id="docked_height" />
+        </td>
+        <td>
+          <label id="undocked_label" for="undocked_height">Undocked:&nbsp;</label>
+        </td>
+        <td>
+          <input type="text" id="undocked_height" />
+        </td>
+      </tr>
+    </table>
+    <div>
+      <div>
+        <div id="font_size_label">
+          Font Size</div>
+        <div id="fonts">
+          <span style="font-size: 12px">aA</span><input id="small" name="fs" value="small" type="radio" />
+          <span style="font-size: 14px">aA</span><input id="medium" name="fs" value="medium" type="radio" />
+          <span style="font-size: 16px">aA</span><input id="large" name="fs" value="large" type="radio" />
+        </div>
+      </div>
+    </div>
+    <div id="tweets_label">
+      Tweets</div>
+    <div>
+      <input type="checkbox" id="showLinks" />
+      <label id="show_links_label" for="showLinks">Show links in post</label>
+    </div>
+  </div>
+  <div>
+    <input type="checkbox" id="chirpstatus" />
+    <label id="chirp_status_label" for="chirpstatus">Chirp when new status arrives</label>
+  </div>
+  <div>
+    <input type="checkbox" id="chirpmention" />
+    <label id="chirp_mention_label" for="chirpmention">Chirp when new mention arrives</label>
+  </div>
+  <div>
+    <input type="checkbox" id="chirpmessage" />
+    <label id="chirp_message_label" for="chirpmessage">Chirp when new message arrives</label>
+  </div>
+  <div>
+    <input type="checkbox" id="checkForUpdates" />
+    <label id="check_for_updates_label" for="checkForUpdates">Check for new updates</label>
+  </div>
+  <div>
+    <div id="intervals_label">
+      Intervals (minutes)</div>
+    <div style="margin-top: 5px;">
+      <table style="margin-left: 20px;">
+        <tr>
+          <td>
+            <label id="home_label" for="home">Home</label>
+            <select id="home">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="4">4</option>
+              <option value="6">6</option>
+              <option value="10">10</option>
+            </select>
+          </td>
+          <td>
+            <label id="mentions_label" for="mentions">Mentions</label>
+            <select id="mentions">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="4">4</option>
+              <option value="6">6</option>
+              <option value="10">10</option>
+            </select>
+          </td>
+          <td>
+            <label id="messages_label" for="messages">Messages</label>
+            <select id="messages">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="4">4</option>
+              <option value="6">6</option>
+              <option value="10">10</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <hr />
+  <div style="text-align: right;">
+    by <a href="http://blueonionsoftware.com">Blue Onion Software</a><br />
+    <a id="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5966770">Donate</a><br/>
+    <a id="help" href="http://blueonionsoftware.com/tweetz-help.aspx">Help</a><br />
+  </div>
+  <div>
+    <span id="version_label">v:</span> <span id="version"></span>
+  </div>
+</body>
+</html>

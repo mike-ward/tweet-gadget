@@ -1,0 +1,70 @@
+body { font-family: Segoe UI; margin: 0; width: 130px; height: 400px; overflow: hidden; }
+#content.small_font { font-size: 12px; }
+#content.medium_font { font-size: 13px; }
+#content.large_font { font-size: 14px; }
+#tip.small_font { font-size: 11px; }
+#tip.medium_font { font-size: 12px; }
+#tip.large_font { font-size: 13px; }
+#edit.small_font { font-size: 11px; }
+#edit.medium_font { font-size: 12px; }
+#edit.large_font { font-size: 13px; }
+#status.small_font { font-size: 13px; }
+#status.medium_font { font-size: 13px; }
+#status.large_font { font-size: 13px; }
+#panel.small_font { font-size: 11px; }
+#panel.medium_font { font-size: 11px; }
+#panel.large_font { font-size: 11px; }
+#panel { border-collapse: collapse; margin: 2px; }
+#panel td { padding: 3px 10px; }
+.panelseparator { height: 1px; line-height: 1px; margin: 0 2px; padding: 0; background: #555; font-size: 1px; }
+#panel tr:hover { background-color: #666; }
+#container { width: 298px; border: 1px solid #334; overflow: hidden; overflow-x: hidden; overflow-y: hidden; }
+a:link, a:visited { nofocusline: expression(this.onFocus=this.blur()); text-decoration: none; }
+#title { background-color: #334; background-image: url(../images/title.png); background-repeat: no-repeat; background-position: 6px 2px; height: 12px; border-bottom: solid 1px #222; }
+#title span { float: right; margin-top: -6px; margin-right: 6px; }
+#content { margin-left: 2px; height: 330px; border: none; }
+#content { text-align: left; word-wrap: break-word; overflow-x: hidden; overflow-y: scroll; }
+.tweet { margin: 0; padding-top: 1px; width: 275px; }
+img.pic { float: left; width: 40px; height: 40px; margin-right: 4px; padding-left: 1px; padding-top: 2px; }
+img.pic:hover, #title:hover { cursor: pointer; }
+img.msg, img.retweet { vertical-align: middle; background-image: url("../images/ui-icons-on.png"); }
+img.msg { background-position: -81px -96px; width: 14px; height: 15px; }
+img.retweet { background-position: -67px -83px; width: 13px; height: 11px; margin-top: 4px; }
+.tweet_text { float: left; }
+.divider { height: 0; }
+#tabs { padding-top: 3px; padding-bottom: 3px; padding-left: 4px; }
+#tabs img { padding-left: 10px; }
+.info { clear: both; text-align: right; font-style: italic; font-size: 90%; margin-top: 5px; margin-bottom: 3px; }
+.info span { display: inline; }
+#panel { position: absolute; display: none; z-index: 10; padding: 5px 5px 5px 4px; }
+#lock_indicator { background-position: 0px -124px; background-image: url("../images/ui-icons-on.png"); width: 16px; height: 16px; }
+.screenname:hover, .hashtag:hover, .inreplyto:hover, #footer:hover, #more:hover { cursor: pointer; }
+#edit { padding: 5px; display: none; }
+#edit { z-index: 2; position: absolute; bottom: 0; left: 4px; right: 4px; zoom: 1; }
+#edit div { margin: 5px 0; }
+#edit textarea { width: 99.3%; border: none; overflow: hidden; font-family: Segoe UI; height: 225px; }
+#shorten, #cancel, #send, #search_button { margin-left: 5px; }
+#shorten:hover, #cancel:hover, #send:hover, #search_button:hover, #tabs img:hover { cursor: pointer; }
+#cancel { display: inline; }
+#counter { float: left; }
+m #search input { width: 112px; margin-left: 6px; margin-bottom: 4px; }
+#tip, #ask, #menu { position: absolute; left: 10px; background: #ddd; color: #000; border: #ddd ridge 2px; word-wrap: break-word; padding: 4px; overflow: hidden; }
+#ask { text-align: center; }
+#ask button { width: 3em; vertical-align: middle; margin: 5px; }
+#status { position: absolute; z-index: 11; padding-bottom: 2px; left: 6px; text-align: center; display: none; }
+#more { text-align: center; }
+.menu_off, .blur { color: #777; }
+  
+#container.docked { width: 128px; margin-right: 0px; }
+#container.docked #content.small_font { font-size: 11px; }
+#container.docked #content.medium_font { font-size: 12px; }
+#container.docked #content.large_font { font-size: 13px; }
+#container.docked .tweet { margin: 0; padding-top: 1px; width: 122px; }
+#container.docked img.pic { float: left; width: 24px; height: 24px; margin-right: 4px; padding-left: 1px; padding-top: 2px; }
+#container.docked .tweet_text { float: none; }
+#container.docked #content { overflow-y: hidden; }
+#container.docked #tabs img { padding-left: 4px; }
+#container.docked #panel { margin: 0; }
+#container.docked #panel td { padding: 3px 6px; }
+#edit.docked textarea { height: 200px; }
+#edit.docked #cancel { display: none; }

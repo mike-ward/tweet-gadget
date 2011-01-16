@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<gadget>
+  <name>tweetz 3.1</name>
+  <namespace>blueonionsoftware</namespace>
+  <version>3.1.0.7</version>
+  <author name="Mike Ward">
+    <info url="BlueOnionSoftware.com" text="Blue Onion Software" />
+  </author>
+  <copyright>&#169; 2010</copyright>
+  <description>Twitter gadget</description>
+  <icons>
+    <icon height="36" width="49" src="images/logo.png" />
+  </icons>
+
+  <hosts>
+    <host name="sidebar">
+      <base type="HTML" apiVersion="1.0.0" src="tweetz3.html" />
+      <permissions>full</permissions>
+      <platform minPlatformVersion="0.3" />
+    </host>
+  </hosts>
+</gadget>
