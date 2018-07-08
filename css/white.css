@@ -2,10 +2,9 @@ html, body, #container { color: #000; background-color: #fff; }
 a:link, a:visited { color: #009; }
 a:hover { color: #00f; }
 #content { scrollbar-base-color: #fff; scrollbar-arrow-color: #bbb; scrollbar-3dlight-color: #fff; scrollbar-darkshadow-color: #fff; scrollbar-face-color: #ddd; scrollbar-highlight-color: #fff; scrollbar-shadow-color: #fff; scrollbar-track-color: #fdfdfd; }
-.tweet { border: solid 1px #fff; }
-.divider { border-top: solid 1px #999; border-bottom: solid 0px #fff; }
+.tweet {  padding: 0 2px; border: border-top: 1px solid #aaa; border-bottom: 1px solid #ccc;}
 .atname { color: #009; }
-.info { color: #666; }
+.tweet_info { color: #666; }
 .screenname, .hashtag, .inreplyto, #more { color: #009; }
 #panel { background-color: #444; border: solid 1px #000; }
 .screenname:hover, .hashtag:hover, .inreplyto:hover, #footer:hover, #more:hover { color: #00f; }
@@ -18,7 +17,7 @@ a:hover { color: #00f; }
 .mention { background-color: #bcb; border: solid 1px #bcb; }
 .message { background-color: #ccc; border: solid 1px #ccc; }
 .selected_tweet { background-color: #dfdfdf; }
-#tabs { background-color: #69c; }
+#tabs { background-color: #69c; border-top: 1px solid #00a; border-bottom: 1px solid #999; }
 #title { background-color: #00a; }
 #errorText { color: #f00; }
 .counter_ok { color: #000; }
@@ -32,5 +31,4 @@ a:hover { color: #00f; }
 .unread { color: Navy; margin-left: 3px; }
 .read { display: none; visibility: hidden; }
 html, body, #container { filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#dfefdf', endColorstr='#ffffff'); }
-.tweet { border-color: transparent; }
 #panel { background-color: #ddd; border: solid 1px #000; }

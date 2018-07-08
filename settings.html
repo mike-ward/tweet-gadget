@@ -4,9 +4,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <style type="text/css">
     body { width: 250px; height: 400px; margin-top: 0; }
-    table { font-size: 12px; margin-top: 5px; }
+    table { font-size: 12px; margin-top: 4px; }
     td { text-align: center; }
-    div { margin-bottom: 3px; }
+    div { margin-bottom: 2px; }
     #docked_height, #undocked_height { width: 35px; margin-right: 10px; }
     a, a:visited { color: #00f; }
     hr { height: 1px; }
@@ -25,15 +25,15 @@
           var settings = System.Gadget.document.parentWindow.APP.settings;
           settings.dockedHeight(Math.max(150, +$("#docked_height").val()));
           settings.undockedHeight(Math.max(150, +$("#undocked_height").val()));
-          settings.chirpOnStatus($("#chirpstatus").attr("checked"));
-          settings.chirpOnMention($("#chirpmention").attr("checked"));
-          settings.chirpOnMessage($("#chirpmessage").attr("checked"));
+          settings.chirpOnStatus($("#chirpstatus").prop("checked"));
+          settings.chirpOnMention($("#chirpmention").prop("checked"));
+          settings.chirpOnMessage($("#chirpmessage").prop("checked"));
           settings.intervalHome($("#home").val());
           settings.intervalMentions($("#mentions").val());
           settings.intervalMessages($("#messages").val());
-          settings.checkForUpdates($("#checkForUpdates").attr("checked"));
+          settings.checkForUpdates($("#checkForUpdates").prop("checked"));
           settings.fontSize($("input:radio:checked").val());
-          settings.showLinks($("#showLinks").attr("checked"));
+          settings.showLinks($("#showLinks").prop("checked"));
         }
         event.cancel = false;
       }
@@ -55,7 +55,7 @@
       $("a").bind("focus", function () { this.hideFocus = true; });
       var fs = settings.fontSize() || "medium";
       $("#" + fs).attr("checked", "checked");
-      $("#showLinks").attr("checked", settings.showLinks());
+      $("#showLinks").prop("checked", settings.showLinks());
 
       var locale = System.Gadget.document.parentWindow.APP.locale;
       $("#height_label").text(locale.settings_height);
@@ -176,6 +176,7 @@
   <hr />
   <div style="text-align: right;">
     by <a href="http://blueonionsoftware.com">Blue Onion Software</a><br />
+    aqua theme by <a href="http://xenosium.com">Kimatg</a><br/>
     <a id="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5966770">Donate</a><br/>
     <a id="help" href="http://blueonionsoftware.com/tweetz-help.aspx">Help</a><br />
   </div>

@@ -4,13 +4,17 @@ APP.locale = {
   link: "[saite]",
   new_version_available: "Hei, ir pieejama jaunāka tweetz versija! Vai vēlies to lejupielādēt?",
   status_updated: "Statuss atjaunots",
-  retweeted_by: "Retvītojis",
-  retweeted_by_you: "Tavs retvīts",
-  retweeted_by_you_comma: "Tavs retvīts, ",
+  // 0 = autors
+  // 1 = skaita priedēklis
+  // 2 = skaits
+  // 3 = skaita piedēklis
+  // 4 = daudzskaitļa piedēklis
+  // 5 = retvītojis
   retweeted_by_format: " {5} {0}{1}{2}{3}{4}",
-  retweeted_by_arg_1: " un ",
-  retweeted_by_arg_3: " cits",
-  retweeted_by_arg_4: "/i",
+  retweeted_by: "RT",
+  retweeted_d_by_arg_1: "+",
+  retweeted_by_arg_3: "",
+  retweeted_by_arg_4: "",
   favorites_updated: "Izlase atjaunota",
   message_sent: "Ziņa nosūtīta",
   retweet_sent: "Retvīts nosūtīts",
@@ -24,8 +28,8 @@ APP.locale = {
   send_now_sending: "Sūta...",
   edit_whats_happening: "Kas notiek?",
   edit_shorten: "Saīsināt",
-  edit_cancel: "Atcelt",
   edit_shorten_tooltip:  "Saīsināt saites (ctrl+K)",
+  edit_cancel: "Atcelt",
   edit_send: "Nosūtīt",
   edit_message_to: "Ziņas adresāts:",
   edit_retweet: "Retvītot",
@@ -38,10 +42,15 @@ APP.locale = {
   panel_favorites_tooltip: "Pievienot izlasei",
   panel_user_tooltip: "Par lietotāju",
   time_seconds_ago: "dažas sekundes atpakaļ",
-  time_minute_ago: "1 minūti atpakaļ",
-  time_minutes_ago: "{0} minūtes atpakaļ",
-  time_hour_ago: "1 stundu atpakaļ",
-  time_hours_ago: "{0} stundas atpakaļ",
+  // time format: {0}=number, {1}=unit of time(hours or minutes)
+  time_minute_ago: "{0}{1}",
+  time_minutes_ago: "{0}{1}",
+  time_hour_ago: "{0}{1}",
+  time_hours_ago: "{0}{1}",
+  time_hour_unit: "h",
+  time_minute_unit: "m",
+  time_hours_unit: "h",
+  time_minutes_unit: "m",
   time_yesterday: "vakar",
   time_am: "am",
   time_pm: "pm",

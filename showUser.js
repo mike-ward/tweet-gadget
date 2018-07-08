@@ -2,6 +2,8 @@
 /*jslint browser: true, windows: true */
 /*global $: false, OAuth: false, jQuery: false, window: false */
 
+jQuery.support.cors = true; // force cross-site scripting (as of jQuery 1.5)
+
 String.prototype.format = function () {
   var pattern = /\{\d+\}/g;
   var args = arguments;
@@ -21,8 +23,9 @@ USER.followText = function (yes, is_protected) {
 };
 
 USER.friendship = function (screen_name, is_protected) {
-  $.get("http://twitter.com/friendships/show.json",
-    { "target_screen_name": screen_name, source_screen_name: System.Gadget.document.parentWindow.APP.settings.username() },
+  var parentWindow = System.Gadget.document.parentWindow;
+  parentWindow.APP.showUserParams.model.comm.get("https://api.twitter.com/1.1/friendships/show.json",
+    { "target_screen_name": screen_name, "source_screen_name": System.Gadget.document.parentWindow.APP.settings.username() },
     function (data) {
       var locale = System.Gadget.document.parentWindow.APP.locale;
       $("#waiting").css("visibility", "hidden");
@@ -73,9 +76,9 @@ $(function () {
   var screenName = parentWindow.APP.showUserParams.showUserName.replace("@", "");
   var userName = parentWindow.APP.settings.username();
   USER.localize(parentWindow.APP.locale);
-  parentWindow.APP.twitter.getUserInfo(screenName, function (user) {
+  parentWindow.APP.twitter.getUserInfo(parentWindow.APP.showUserParams.model, screenName, function (user) {
     $("#info").html(
-      "<b>" + user.name + "</b> - <i>" + (user.location || "no location specified") + "</i><br/>" +
+      "<b>" + user.name + "</b> <i>" + "@" + user.screen_name + " - " + (user.location || "no location specified") + "</i><br/>" +
       (user.description || "no description specified"));
     $("#userUrl").html((user.url) ? ("<a href='" + user.url + "'>" + user.url + "</a>") : "no link specified");
     $("#pic").attr("src", user.profile_image_url);

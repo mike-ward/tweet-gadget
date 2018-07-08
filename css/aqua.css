@@ -5,7 +5,7 @@
 /* ---------------------------------------------- */
 
 
-html, body, #container 			{ font-family: "Segoe UI", "Meiryo UI", "Malgun Gothic", sans-serif; color: #aaa; background-color: #2a2a2a; }
+html, body, #container 			{ font-family: "Segoe UI", "Meiryo UI", "Malgun Gothic", sans-serif; color: #aaa; background-color: #111; }
 a:link, a:visited 				{ color: #99ceea;  }
 a:hover 						{ color: #bbddff; }
 #container						{ background: url('./aqua/title-bg.png') repeat-x 0 left #2a2a2a;}
@@ -13,17 +13,17 @@ a:hover 						{ color: #bbddff; }
 
 #title 							{ border: none; background: url('./aqua/tweetz.png') no-repeat 5px left transparent; width: 70px; float: right; height: 25px; padding: 5px 0; margin: 0;}
 #tabs							{ background: transparent; width: 180px; height: 25px; padding: 5px 5px; margin: 0; }
-#tabs img						{ padding: 24px 5px 0 0; height: 0; width: 24px; background: url('./aqua/unified.png') no-repeat top left; overflow: hidden; }
-#tabs img:hover 				{ background-position: -24px left !important; }
-#tabs img:active 				{ background-position: -48px left !important; }
-#tabs img.active, #tabs img.active:hover, #tabs img.active:active { background-position: -72px left !important; }
+#tabs div						{ margin-top: -10px; height: 24px; width: 24px; background: url('./aqua/unified.png') no-repeat top left; overflow: hidden; }
+#tabs div:hover 				{ background-position: -24px left !important; }
+#tabs div:active 				{ background-position: -48px left !important; }
+#tabs div.active, #tabs div.active:hover, #tabs div.active:active { background-position: -72px left !important; }
 
-#tabs img#tab_all				{ background-image: url('./aqua/unified.png'); }
-#tabs img#tab_home				{ background-image: url('./aqua/home.png'); }
-#tabs img#tab_mentions			{ background-image: url('./aqua/mentions.png'); }
-#tabs img#tab_messages			{ background-image: url('./aqua/messages.png'); }
-#tabs img#tab_search			{ background-image: url('./aqua/find.png'); }
-#tabs img#tab_favorites			{ background-image: url('./aqua/favorites.png'); }
+#tabs div#tab_all				{ left: 6px; background-image: url('./aqua/unified.png'); }
+#tabs div#tab_home				{ left: 30px; background-image: url('./aqua/home.png'); }
+#tabs div#tab_mentions			{ left: 54px; background-image: url('./aqua/mentions.png'); }
+#tabs div#tab_messages			{ left: 78px; background-image: url('./aqua/messages.png'); }
+#tabs div#tab_search			{ left: 102px; background-image: url('./aqua/find.png'); }
+#tabs div#tab_favorites			{ left: 126px; background-image: url('./aqua/favorites.png'); }
 
 /* indicators */
 #title span#comm_indicator		{ width: 10px; height: 10px; font-size: 14pt; position: absolute; top: 5px; right: -3px;}
@@ -47,30 +47,38 @@ a:hover 						{ color: #bbddff; }
 
 /* tweet */
 .tweet .pic						{ margin: 2px;  }
-.tweet_text						{ font-size: 11px; line-height: 11pt; padding: 0 2px; margin: 2px;  }
-.tweet_text .screenname			{  }
-.tweet_text .screenname.author	{ font-size: 9pt; display: block; height: 15px; padding: 0 0 1px 0; color: #aacbde; font-weight: bold;}
-.tweet_text .screenname.author:hover	{ color: #bbddff;}
+.tweet_content						{ }
+.tweet_content .screenname			{ }
+.tweet_content .screenname.author	{ font-size: 9pt; height: 15px; display: inline-block; padding: 0 4px; color: #aacbde; font-weight: bold; }
+.tweet_content .screenname.author:hover	{ color: #bbddff;}
+
+.tweet_text						{ font-size: 11px; line-height: 11pt; padding: 0 2px; margin: 2px; display: block; z-index: 3; width: 230px; }
+.tweet_text a.link				{ 	}
+
+
 #container[style="WIDTH: 128px; HEIGHT: 398px"] .tweet .screenname:first-child 	{ font-size: 10pt; display: block; margin-left: 10px; height: 15px; padding: 2px;}
-.tweet .retweet				 	{ background: url('./aqua/retweet.png') no-repeat left bottom; margin: -4px -7px 0 0; width: 24px; height: 24px; float: right;}
-.tweet.selected_tweet .retweet	{ margin: -4px -7px 0 0; }
+.tweet .retweet				 	{ background: url('./aqua/retweet.png') no-repeat left bottom; margin: -3px 0 0 0; width: 24px; height: 24px; float: right; z-index: 1;}
+.tweet.selected_tweet .retweet	{ margin: -3px 0 0 0; }
 .tweet .retweet+.screenname 	{ font-size: 9pt; display: block; height: 15px; }
 .tweet .msg						{ display: none; }
 .tweet .msg+.screenname 		{ font-size: 9pt; display: block; height: 15px;}
 
 .divider 						{ display: none; }
 .atname 						{ color: #99ceea; }
-.info 							{ color: #aaa; font-size: 7.5pt; padding: 0 2px; }
-.info .unread 					{ display: none;}
-.info .read 					{ display: none;}
+.tweet_info 							{ color: #aaa; font-size: 7.5pt; padding: 0 2px; }
+.tweet_info .unread 					{ display: none;}
+.tweet_info .read 					{ display: none;}
 .screenname, .hashtag, .inreplyto, #more { color: #99ceea; }
 
-#panel 							{ background-color: #444;  border: solid 1px #666; margin-left: 2px; }
+.tweet_time						{ }
+
+#panel 							{ background-color: #444; color: #ddd; border: solid 1px #666; margin-left: 2px; }
+#panel tr:hover					{ background: #395c6f; color: #ccc; }
 #footer 						{ color: #99ceea; }
 
 .screenname:hover, .hashtag:hover, .inreplyto:hover, #footer:hover, #more:hover { color: #bbddff; }
-#edit 							{ background-color: #444; border: solid 1px #2a2a2a; }
-#edit textarea 					{ background-color: #555; color: #eee; height: 140px; }
+
+
 #shorten, #cancel, #send, #search_button { color: #bbb; padding: 2px 7px; background: #5a5a5a; }
 #shorten:hover, #cancel:hover, #send:hover, #search_button:hover { color: #eee; background: #666666;}
 #tip, #ask 						{ background: #ddd; color: #000; border: #ddd ridge 2px; }
@@ -94,8 +102,19 @@ a:hover 						{ color: #bbddff; }
 #pin_text						{}
 #login							{}
 
+/* write window */
+#edit							{ background: url('./aqua/twit-bg-selected-hover.png') repeat-x top left #242424; border-top: 1px solid #444; margin: -3px; padding: 6px; overflow: hidden; }
+#edit div:first-child			{ font-weight: 100; margin-bottom: 0; color: #666; font-size: 18px; height: 17px; z-index: 1000; position: relative; }
+#edit textarea 					{ background: #1a1a1a; border-top: 1px solid #0d0d0d; border-bottom: 1px solid #333; color: #eee; height: 140px; margin: 2px 0 2px -10px; padding: 5px 15px; width: 280px; }
+#edit .hover					{ background: url('./aqua/title-bg.png') repeat-x left bottom; text-transform: lowercase; font-size: 1.2em; line-height: 18px; height: 18px; background-color: #395c6f; color: #fff; border-top: 1px solid #4d778d; border-bottom: 1px solid #2e393f;}
+#edit .hover:hover				{ background: url('./aqua/title-bg.png') repeat-x left top; }
+#edit .hover#shorten			{}
+#edit .hover#cancel				{}
+#edit .hover#send				{ font-weight: bold;}
+#edit #counter					{ font-size: 1.4em; }
 
 
+#tabs div, #tabs div:hover, #tabs div.active  { opacity: 1.0; filter: none; }
 
 
 /* ---------------------- DOCKED STYLE ---------------------- */
@@ -107,34 +126,36 @@ a:hover 						{ color: #bbddff; }
 #container.docked img.pic { float: left; width: 24px; height: 24px; margin-right: 4px; padding-left: 1px; padding-top: 2px; }
 #container.docked .tweet_text { float: none; }
 #container.docked #content { overflow-y: hidden; }
-#container.docked #tabs img { padding-left: 4px; }
 #container.docked #panel { margin: 0; }
-#container.docked #panel td { padding: 3px 6px; }
-#edit.docked textarea { height: 180px; }
-#edit.docked #cancel { display: none; }
+#container.docked #panel td { padding: 3px 4px; }
+
+
+#container.docked .tweet_content .screenname.author	{ padding-left: 0; }
+#container.docked .tweet_text	{ width: auto }
 
 /* tabs */
 #container.docked								{ background: url('./aqua/title-bg.png') repeat-x -1px left #2a2a2a;}
-#container.docked #title 						{ background: url('./aqua/tweetz-s.png') no-repeat 5px 2px transparent; float: none; height: 14px; padding: 2px;}
-#container.docked #tabs							{ width: 85px; height: 14px; padding: 1px 5px; margin: 0; }
-#container.docked #tabs img						{ padding: 12px 2px 0 0; height: 0; width: 12px; background: url('./aqua/unified.png') no-repeat top left; overflow: hidden; }
-#container.docked #tabs img:hover 				{ background-position: -12px left !important; }
-#container.docked #tabs img:active 				{ background-position: -24px left !important; }
-#container.docked #tabs img.active, #container.docked #tabs img.active:hover, #container.docked #tabs img.active:active { background-position: -36px left !important; }
+#container.docked #header       { height: 30px; overflow: hidden; } 
+#container.docked #title 						{ background: url('./aqua/tweetz-s.png') no-repeat 5px 2px transparent; float: none; }
+#container.docked #tabs							{ width: 85px;height: 14px;  margin: 0; }
+#container.docked #tabs div						{ top: 16px; height: 12px; width: 12px; margin: 0; background: url('./aqua/unified-s.png') no-repeat top left; overflow: hidden; }
+#container.docked #tabs div:hover 				{ background-position: -12px left !important; }
+#container.docked #tabs div:active 				{ background-position: -24px left !important; }
+#container.docked #tabs div.active, #container.docked #tabs div.active:hover, #container.docked #tabs div.active:active { background-position: -36px left !important; }
 
-#container.docked #tabs img#tab_all				{ background-image: url('./aqua/unified-s.png'); }
-#container.docked #tabs img#tab_home			{ background-image: url('./aqua/home-s.png'); }
-#container.docked #tabs img#tab_mentions		{ background-image: url('./aqua/mentions-s.png'); }
-#container.docked #tabs img#tab_messages		{ background-image: url('./aqua/messages-s.png'); }
-#container.docked #tabs img#tab_search			{ background-image: url('./aqua/find-s.png'); }
-#container.docked #tabs img#tab_favorites		{ background-image: url('./aqua/favorites-s.png'); }
+#container.docked #tabs div#tab_all				  { left: 6px; background-image: url('./aqua/unified-s.png'); }
+#container.docked #tabs div#tab_home		 	  { left: 20px; background-image: url('./aqua/home-s.png'); }
+#container.docked #tabs div#tab_mentions		{ left: 34px; background-image: url('./aqua/mentions-s.png'); }
+#container.docked #tabs div#tab_messages		{ left: 48px; background-image: url('./aqua/messages-s.png'); }
+#container.docked #tabs div#tab_search			{ left: 62px; background-image: url('./aqua/find-s.png'); }
+#container.docked #tabs div#tab_favorites		{ left: 76px; background-image: url('./aqua/favorites-s.png'); }
 
 /* indicators */
 #container.docked #title span#comm_indicator		{ width: 10px; height: 10px; font-size: 16px; position: absolute; top: 2px; right: -5px;}
 #container.docked #title span#lock_indicator		{ background: url('./aqua/lock.png') no-repeat top right transparent; width: 10px; height: 10px; position: absolute; top: 25px; right: -2px; }
 
 /* tweet backgrounds by type */
-#container.docked .tweet 							{ padding: 2px; margin: 0; border-top: 1px solid #444; border-bottom: 1px solid #222; background: url('./aqua/twit-bg.png') repeat-x top left; }
+#container.docked .tweet 							{ padding: 2px; margin: 0; border-top: 1px solid #444; border-bottom: 1px solid #222; background: url('./aqua/twit-bg.png') repeat-x top left #2a2a2a; }
 #container.docked .tweet:hover						{ background: url('./aqua/twit-bg-hover.png') repeat-x top left; }
 #container.docked .tweet.selected_tweet 			{ padding: 4px 2px 1px 2px; background: url('./aqua/twit-bg-selected.png') repeat-x top left #262626; border-top: 0px solid #242424;}
 #container.docked .tweet.selected_tweet:hover		{ padding: 4px 2px 1px 2px; background: url('./aqua/twit-bg-selected-hover.png') repeat-x top left #242424;}
@@ -152,3 +173,16 @@ a:hover 						{ color: #bbddff; }
 
 #container.docked .tweet .retweet				 	{ background: url('./aqua/retweet.png') no-repeat left bottom; margin: -2px -7px 0 0; width: 24px; height: 24px; float: right;}
 #container.docked .tweet.selected_tweet .retweet	{ margin: -2px -7px 0 0; }
+
+
+/* write window */
+.docked#edit							{ background: url('./aqua/twit-bg-selected-hover.png') repeat-x top left #242424; border-top: 1px solid #444; margin: -3px; padding: 6px; overflow: hidden; }
+.docked#edit div:first-child			{ font-weight: bold; margin-bottom: 0; color: #666; font-size: 11px; height: 11px; }
+.docked#edit textarea 					{ background: #1a1a1a; border-top: 1px solid #0d0d0d; border-bottom: 1px solid #333; color: #eee; height: 140px; margin: 2px 0 2px -10px; padding: 5px 15px; width: 110px; }
+.docked#edit #cancel { display: none; }
+.docked#edit .hover					{ background: url('./aqua/title-bg.png') repeat-x left bottom; text-transform: lowercase; font-size: 1em; line-height: 18px; height: 18px; background-color: #395c6f; color: #fff; border-top: 1px solid #4d778d; border-bottom: 1px solid #2e393f;}
+.docked#edit .hover:hover				{ background: url('./aqua/title-bg.png') repeat-x left top; }
+.docked#edit .hover#shorten			{ letter-spacing: -1px;}
+.docked#edit .hover#cancel				{}
+.docked#edit .hover#send				{ font-weight: bold;}
+.docked#edit #counter					{ font-size: 1em; height: 18px; line-height: 18px; }

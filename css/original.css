@@ -2,10 +2,9 @@ html, body, #container { color: #bbb; background-color: #333; }
 a:link, a:visited { color: #99bbff; }
 a:hover { color: #bbddff; }
 #content { scrollbar-base-color: #333; scrollbar-arrow-color: #666; scrollbar-3dlight-color: #333; scrollbar-darkshadow-color: #333; scrollbar-face-color: #444; scrollbar-highlight-color: #333; scrollbar-shadow-color: #333; scrollbar-track-color: #323232; }
-.tweet { border: solid 1px #333; }
-.divider { border-top: solid 1px #222; border-bottom: solid 1px #444; }
+.tweet { border: solid 1px #333; border-top: 1px solid #444; border-bottom: 1px solid #222; }
 .atname { color: #99bbff; }
-.info { color: #aaa; }
+.tweet_info { color: #aaa }
 .screenname, .hashtag, .inreplyto, #more { color: #99bbff; }
 #panel { background-color: #444; border: solid 1px #000; }
 #footer { color: #99bbff; }
@@ -16,9 +15,9 @@ a:hover { color: #bbddff; }
 #shorten:hover, #cancel:hover, #send:hover, #search_button:hover { color: #bbddff; }
 #tip, #ask { background: #ddd; color: #000; border: #ddd ridge 2px; }
 #status { background-color: #ddd; color: #222; }
-.mention { background-color: #2e3c2e; border: solid 1px #333; }
-.message { background-color: #334; border: solid 1px #334; }
-.selected_tweet { border: solid 1px #333; background: #3a3a3a; }
+.mention { background-color: #2e3c2e; }
+.message { background-color: #334; }
+.selected_tweet { background: #3a3a3a; }
 .mention.selected_tweet { background: #3b4a3b; }
 .message.selected_tweet { background: #3d3d4f; }
 #errorText { color: #f00; }
@@ -26,9 +25,7 @@ a:hover { color: #bbddff; }
 .counter_near { color: #ff0; }
 .counter_over { color: #f33; }
 #container { border-color: #000; }
-#tabs_divider { border-top: solid 1px #222; border-bottom: solid 1px #444; }
-#tabs img { opacity: 0.4; filter: alpha(opacity=40); }
-#tabs img:hover { opacity: 1.0; filter: alpha(opacity=100); }
-#tabs img.active { opacity: 1.0; filter: alpha(opacity=100); }
-.read, .unread { margin-left: 2px; color: orange; }
+#tabs { border-top: 1px solid #444; border-bottom: 1px solid #222; }
+.read, .unread { margin-right: 2px; color: orange; }
 .read { color: #333; }
+#title { border-bottom: 1px solid #222; }

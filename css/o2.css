@@ -4,7 +4,7 @@ a:hover { color: #bbddff; }
 #content { scrollbar-base-color: #333; scrollbar-arrow-color: #666; scrollbar-3dlight-color: #333; scrollbar-darkshadow-color: #333; scrollbar-face-color: #444; scrollbar-highlight-color: #333; scrollbar-shadow-color: #333; scrollbar-track-color: #323232; }
 #content.small_font { font-size: 8pt; }
 
-.tweet { border: solid 1px #333; padding: 0 2px; }
+.tweet { border: solid 1px #333; padding: 0 2px; border-top: 1px solid #444; border-bottom: 1px solid #222; }
 
 .tweet .pic { margin-top: 18px; }
 .tweet .screenname { }
@@ -16,9 +16,9 @@ a:hover { color: #bbddff; }
 .tweet .tweet_text { font-size: 8pt; line-height: 11pt; padding: 0 2px; }
 .divider { border-top: solid 1px #222; border-bottom: solid 1px #444; }
 .atname { color: #99bbff; }
-.info { color: #aaa; font-size: 7.5pt; }
-.info .unread { color: orange; margin-left: 3px; }
-.info .read { color: #333; margin-left: 3px; }
+.tweet_info { color: #aaa; font-size: 7.5pt; }
+.tweet_info .unread { color: orange; margin-left: 3px; }
+.tweet_info .read { color: #333; margin-left: 3px; }
 .screenname, .hashtag, .inreplyto, #more { color: #99bbff; }
 
 #panel { background-color: #444; border: solid 1px #000; }

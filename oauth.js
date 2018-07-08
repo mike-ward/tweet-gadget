@@ -285,14 +285,17 @@ OAuth.setProperties(OAuth, // utility functions
     }
 ,
     /** Construct the value of the Authorization header for an HTTP request. */
-    getAuthorizationHeader: function getAuthorizationHeader(realm, parameters) {
-        var header = 'OAuth realm="' + OAuth.percentEncode(realm) + '"';
+    getAuthorizationHeader: function getAuthorizationHeader(parameters) {
+        var header = 'OAuth ';
+        var first = true;
         var list = OAuth.getParameterList(parameters);
         for (var p = 0; p < list.length; ++p) {
             var parameter = list[p];
             var name = parameter[0];
             if (name.indexOf("oauth_") == 0) {
-                header += ',' + OAuth.percentEncode(name) + '="' + OAuth.percentEncode(parameter[1]) + '"';
+                if (!first) header += ', ';
+                first = false;
+                header += OAuth.percentEncode(name) + '="' + OAuth.percentEncode(parameter[1]) + '"';
             }
         }
         return header;
@@ -529,12 +532,12 @@ OAuth.setProperties(OAuth.SignatureMethod, // class members
     }
 });
 
-OAuth.SignatureMethod.registerMethodClass(["PLAINTEXT", "PLAINTEXT-Accessor"],
-    OAuth.SignatureMethod.makeSubclass(
-        function getSignature(baseString) {
-            return this.key;
-        }
-    ));
+//OAuth.SignatureMethod.registerMethodClass(["PLAINTEXT", "PLAINTEXT-Accessor"],
+//    OAuth.SignatureMethod.makeSubclass(
+//        function getSignature(baseString) {
+//            return this.key;
+//        }
+//    ));
 
 OAuth.SignatureMethod.registerMethodClass(["HMAC-SHA1", "HMAC-SHA1-Accessor"],
     OAuth.SignatureMethod.makeSubclass(
