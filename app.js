@@ -312,8 +312,8 @@ APP.comm = function () {
 
   accessor =
     {
-      consumerKey: "n4Ce1XD9SEXKBpJlkrGpA",
-      consumerSecret: "OKcBnIRHubrbKDbkXVEAVFLJ7yUC9glJ6Mhj6enXesU",
+      consumerKey: "wmY1fgE8kETqYsTtkJV3TFZpC",
+      consumerSecret: "xaXmPW9hSA5COFrZywcFOclIfCklvpz8gPHjc7H75rHp3FKt4U",
       tokenAccess: APP.settings.tokenAccess(),
       tokenSecret: APP.settings.tokenSecret(),
       userId: APP.settings.userId(),
