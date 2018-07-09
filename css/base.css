@@ -25,12 +25,14 @@ a:link, a:visited { nofocusline: expression(this.onFocus=this.blur()); text-deco
 #content { height: 330px; border: none; }
 #content { text-align: left; word-wrap: break-word; overflow-x: hidden; overflow-y: scroll; }
 .tweet { margin: 0; width: 275px; }
+a img { border: none; }
+img.media { width: 100%; margin: 5px 5px 5px 5px; }
 img.pic { float: left; width: 40px; height: 40px; margin: 5px; margin-top: 7px; }
 img.pic:hover, #title:hover { cursor: pointer; }
 img.msg, img.retweet { vertical-align: middle; background-image: url("../images/ui-icons-on.png"); float: right; margin-right: 3px; }
 img.msg { background-position: -81px -96px; width: 14px; height: 15px; }
 img.retweet { background-position: -67px -83px; width: 13px; height: 11px; margin-top: 4px; }
-.tweet_text { float: left; margin-top: 3px; }
+.tweet_text { float: left; margin-top: 3px; margin-left: 5px }
 .tweet_info { clear: both; text-align: right; font-style: italic; font-size: 90%; margin-top: 5px; margin-bottom: 3px; }
 .tweet_info span { display: inline; }
 #panel { position: absolute; display: none; z-index: 10; padding: 5px 5px 5px 4px; }
@@ -72,6 +74,7 @@ img.retweet { background-position: -67px -83px; width: 13px; height: 11px; margi
 #container.docked #content.medium_font { font-size: 12px; }
 #container.docked #content.large_font { font-size: 13px; }
 #container.docked .tweet { margin: 0; padding-top: 5px; width: 128px; }
+#container.docked img.media { margin: 4px 0px 2px 1px; width: 95%}
 #container.docked img.pic { float: left; width: 24px; height: 24px; margin: 2px 4px 0px 1px; }
 #container.docked .tweet_text { float: none; margin-top: 2px; }
 #container.docked #content { overflow-y: hidden; }
