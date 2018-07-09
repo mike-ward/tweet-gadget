@@ -816,17 +816,17 @@ APP.FORM = {
         '<div id="{0}" class="{1}">' +
           '<div class="tweet_inner">' +
             '<img id="p{0}" src="{2}" class="pic"/>' +
-            '<div class="tweet_content">{3}{4}{5}' +
-                '<div class="tweet_text">{6}</div>' +
+            '<div class="tweet_content">{3}{4}{5}{6}' +
+                '<div class="tweet_text">{7}</div>' +
             '</div>' +
             '<div class="tweet_info">' +
-              '<span class="tweet_time">{7}</span>' +
+              '<span class="tweet_time">{8}</span>' +
               '<span class="tweet_source">' +
-                '<span class="source_label">{8}</span>' +
-                '<span class="source">{9}</span> ' +
+                '<span class="source_label">{9}</span>' +
+                '<span class="source">{10}</span> ' +
               '</span>' +
-              '<span class="{10}">{11}</span>' +
-              '<span class="{12}">&bull;</span>' +
+              '<span class="{11}">{12}</span>' +
+              '<span class="{13}">&bull;</span>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -840,6 +840,7 @@ APP.FORM = {
         (tweet.timelines.contains("messages")) ? '<img src="images/invisible.gif" class="msg"/>' : "",
         (tweet.retweeted_status_id) ? '<img src="images/invisible.gif" class="retweet"/>' : "",
         author(tweet.name, tweet.screen_name),
+        (tweet.media_url) ? '<a href="' + tweet.media_link + '"><img src="' + tweet.media_url + '" class="media" /></a>' : "",
         tweet.html,
         timeStamp(tweet.created_at),
         tweet.source ? (locale.foot_via || "via") : "",
@@ -942,6 +943,8 @@ APP.model = function (comm) {
             tweet.name = (user) ? user.name : data.from_user;
             tweet.profile_image_url = (user) ? user.profile_image_url : data.profile_image_url;
             tweet.text = data.text.htmlDecode();
+            tweet.media_url = (data.entities.media) ? data.entities.media[0].media_url_https : null;
+            tweet.media_link = (data.entities.media) ? data.entities.media[0].url : null;
             tweet.created_at = new Date((data.created_at || "").replace("+0000", "GMT"));
             tweet.favorited = data.favorited;
             tweet.source = (data.from_user) ? data.source.htmlDecode() : data.source;
@@ -950,6 +953,8 @@ APP.model = function (comm) {
             tweet.retweeted_status_id = data.retweeted_status && data.retweeted_status.id_str;
             if (tweet.retweeted_status_id) {
                 tweet.text = data.retweeted_status.text;
+				tweet.media_url = (data.retweeted_status.entities.media) ? data.retweeted_status.entities.media[0].media_url_https : null;
+                tweet.media_link = (data.retweeted_status.entities.media) ? data.retweeted_status.entities.media[0].url : null;
                 tweet.retweeted_by = tweet.screen_name;
                 tweet.screen_name = data.retweeted_status.user.screen_name;
                 tweet.name = data.retweeted_status.user.name;
