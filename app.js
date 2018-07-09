@@ -408,33 +408,33 @@ APP.twitter = {
   },
 
   getHome: function (model, more) {
-    var params = { count: 25 }, max_id;
+    var params = { count: 25, include_entities: 'true', tweet_mode: 'extended' }, max_id;
     if (more) { max_id = model.getOldestId("home"); if (max_id) { params.max_id = max_id; } }
     else { params.since_id = model.sinceIdHome || 1; }
     model.comm.get("https://api.twitter.com/1.1/statuses/home_timeline.json", params, function (data) { model.updateHome(data, more); });
   },
 
   getMentions: function (model, more) {
-    var params = { count: 15 }, max_id;
+    var params = { count: 15, include_entities: 'true', tweet_mode: 'extended' }, max_id;
     if (more) { max_id = model.getOldestId("mentions"); if (max_id) { params.max_id = max_id; } }
     else { params.since_id = model.sinceIdMentions || 1; }
     model.comm.get("https://api.twitter.com/1.1/statuses/mentions_timeline.json", params, function (data) { model.updateMentions(data, more); });
   },
 
   getMessages: function (model, more) {
-    var params = { count: 15 }, max_id;
+    var params = { count: 15, include_entities: 'true', tweet_mode: 'extended' }, max_id;
     if (more) { max_id = model.getOldestId("messages"); if (max_id) { params.max_id = max_id; } }
     else { params.since_id = model.sinceIdMessages || 1; }
     model.comm.get("https://api.twitter.com/1.1/direct_messages.json", params, function (data) { model.updateMessages(data, more); });
   },
 
   getMessagesSent: function (model, more) {
-    var params = { count: 15 };
+    var params = { count: 15, include_entities: 'true', tweet_mode: 'extended' };
     model.comm.get("https://api.twitter.com/1.1/direct_messages/sent.json", params, function (data) { model.updateMessages(data, more); });
   },
 
   getFavorites: function (model, more) {
-    var params = { count: 100 }, max_id;
+    var params = { count: 100, include_entities: 'true', tweet_mode: 'extended' }, max_id;
     if (more) { max_id = model.getOldestId("favorites"); if (max_id) { params.max_id = max_id; } }
     model.comm.get("https://api.twitter.com/1.1/favorites/list.json", params, function (data) { model.updateFavorites(data, more); });
   },
@@ -559,7 +559,7 @@ APP.edit = function (model) {
     var count = textarea.val().length;
     counter.text(count);
     counter.removeClass("counter_ok counter_near counter_over");
-    counter.addClass((count > 135) ? ((count > 140) ? "counter_over" : "counter_near") : "counter_ok");
+    counter.addClass((count > 270) ? ((count > 280) ? "counter_over" : "counter_near") : "counter_ok");
   }
 
   function sendNow() {
@@ -567,7 +567,7 @@ APP.edit = function (model) {
         length = text.length,
         successCallback,
         errorCallback;
-    if (length <= 0 || length > 140) { textarea.focus(); return; }
+    if (length <= 0 || length > 280) { textarea.focus(); return; }
     successCallback = function () { that.hide(); textarea.empty(); model.locked(false); };
     errorCallback = function (xhr) { title.text($.parseJSON(xhr.responseText).error); };
     switch (action) {
@@ -942,7 +942,7 @@ APP.model = function (comm) {
             tweet.screen_name = (user) ? user.screen_name : data.from_user;
             tweet.name = (user) ? user.name : data.from_user;
             tweet.profile_image_url = (user) ? user.profile_image_url : data.profile_image_url;
-            tweet.text = data.text.htmlDecode();
+            tweet.text = (data.full_text) ? data.full_text.htmlDecode() : data.text.htmlDecode();
             tweet.media_url = (data.entities.media) ? data.entities.media[0].media_url_https : null;
             tweet.media_link = (data.entities.media) ? data.entities.media[0].url : null;
             tweet.created_at = new Date((data.created_at || "").replace("+0000", "GMT"));
@@ -952,8 +952,8 @@ APP.model = function (comm) {
             tweet.in_reply_to_status_id = data.in_reply_to_status_id_str;
             tweet.retweeted_status_id = data.retweeted_status && data.retweeted_status.id_str;
             if (tweet.retweeted_status_id) {
-                tweet.text = data.retweeted_status.text;
-				tweet.media_url = (data.retweeted_status.entities.media) ? data.retweeted_status.entities.media[0].media_url_https : null;
+                tweet.text = (data.retweeted_status.full_text) ? data.retweeted_status.full_text.htmlDecode() : data.retweeted_status.text.htmlDecode();
+                tweet.media_url = (data.retweeted_status.entities.media) ? data.retweeted_status.entities.media[0].media_url_https : null;
                 tweet.media_link = (data.retweeted_status.entities.media) ? data.retweeted_status.entities.media[0].url : null;
                 tweet.retweeted_by = tweet.screen_name;
                 tweet.screen_name = data.retweeted_status.user.screen_name;
